@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript2</title>
+</head>
+
+<body>
+    <h4>Ejercicio 1:</h4>
+    <script>
+        //Obtenemos la hora actual.
+        let hora_actual = new Date().getHours();
+
+        //Mostramos un saludo concreto según la hora actual utilizando el condicional if.
+        let saludo = " ";
+        if (hora_actual >= 6 && hora_actual < 12) {
+            saludo = "Buenos días";
+        } else if (hora_actual >= 12 && hora_actual <= 19) {
+            saludo = "Buenas tardes";
+        } else {
+            saludo = "Buenas noches"
+        }
+
+        //Actualizar el mensaje al actualizar la página según la hora que sea..
+        document.write("<i>", "<h1>" + saludo + "</h1>", "</i>");
+
+
+    </script>
+
+</body>
+
+</html>
