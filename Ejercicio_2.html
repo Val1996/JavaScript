@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript2</title>
+</head>
+
+<body>
+    <h4>Ejercicio 2:</h4>
+    <script>
+        //Obtenemos la fecha actual, creando un objeto Date.
+        let now = new Date();
+
+        //Ahora extraemos la hora, el día, el mes y el año.
+
+        //Crearemos un array para que nos devuelva un String (nombre del día)
+        let diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+        let dia = diasSemana[now.getDay()]; //Obtenemos el nombre del día actual.
+
+        let mes = now.getDate(); //Obtenemos el día del mes actual.
+        //Crearemos un array para que nos devuelva un String (nombre del mes)
+        let meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+        let nombreMes = meses[now.getMonth()]; //Obtenemos el nombre del mes actual.
+
+        let año = now.getFullYear(); //Obtenemos el año acual.
+        let hora = now.getHours(); //Obtenemos la hora actual.
+        let minutos = now.getMinutes(); //Obtenemos los minutos actuales.
+
+        //Creamos el formato en el que queremos que aparezca la fecha.
+        let salidaFormateada = "Hoy es " + dia + ", " + mes + " de " + nombreMes + " de " + now.getFullYear() + " y son las " + now.getHours() + ':' + now.getMinutes() + " horas.";
+
+        //La fecha actual es escrita en el documento.
+        document.write(salidaFormateada);
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
