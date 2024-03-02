@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio2</title>
+    <style>
+        .label1 {
+            margin-right: 10px; /*Añadimos un espacio entre la etiqueta y el cuadro de texto*/
+        }
+
+        .button-container {
+
+            margin-left: 78px; /*Añadimos 78 pixeles al margen izquierdo, desde el borde izquierdo*/
+        }
+
+        .text-container {
+            margin-left: 20px; 
+        }
+
+    </style>
+</head>
+
+<body onload="Array1(); Array2()"> <!-- Con onload se llama a las funciones Array1(), Array2() cuando la página termina de cargar -->
+
+
+    <!-- Primer div que contiene la etiqueta del primer array y el cuadro de texto donde se mostrará el texto ya predefinido, añadimos readonly para que no sea posible escribir dentro del cuadro-->
+    <div>
+        <label for="array1">Array 1:</label>
+        <input type="text" id="text1" readonly></input>
+    </div>
+    <!-- Segundo div que mostrará el contenido del primer array y nos servirá para mostrar el contenido generado por javascript-->
+    <div>
+        <p id="array1"></p>
+        <p id="resultado1"></p>
+    </div>
+    <br>
+    <!-- Este div contendrá la etiqueta del segundo array y el cuadro de texto donde se mostrará el texto ya predefinido, añadimos readonly para que no sea posible escribir dentro del cuadro-->
+    <div>
+        <label for="array2">Array 2:</label>
+        <input type="text" id="text2" readonly></input>
+    </div>
+    <br>
+    <!-- Este div contiene el botón para concatenar el array1 y el array2-->
+    <div class="button-container">
+        <input type="button" value="Concatenar arrays" onclick="concatenarArrays()"></input>
+    </div>
+    <!-- Este div mostrará el array final, como resultado de la concatenación-->
+    <div>
+        <label class="ArrayFinal" for="ArrayFinal"> Array <br> final:</label>
+        <input class="text-container" type="text" id="textFinal"></input>
+
+    </div>
+
+    <script>
+        //Declaramos las variables para almacenar los arrays
+        let array1;
+        let array2;
+
+        //Creamos una funcion para iniciar el primer array predefinido
+        function Array1() {
+            document.getElementById("text1").value = "A0, B0, A1, B1, A2, B2";
+            array1 = document.getElementById("text1").value.split();
+        }
+        //Creamos otra funcion para iniciar el segundo array predefinido
+        function Array2() {
+            document.getElementById("text2").value = " An, Bn, Cn, Dn, En, Fn.";
+            array2 = document.getElementById("text2").value.split();
+        }
+        //Funcion que concatena los array anteriores y muestra el resultado en el cuadro de texto final.
+        function concatenarArrays() {
+            let arrayFinal = [...array1, ...array2]; //Aquí utilizo (...) para concatenar los dos arrays.
+            document.getElementById("textFinal").value = arrayFinal.join(); //Aqui utilizo join para unir los elementos que forman el array final.
+        }
+
+
+    </script>
+</body>
+
+</html>

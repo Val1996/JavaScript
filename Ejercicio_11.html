@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio3</title>
+</head>
+
+<body>
+    <!--Dentro de este div estará el cuadro de texto desde donde buscaremos el elemento del array / ponemos un texto predefinido dentro del campo con placeholder-->
+    <div>
+        <input type="text" id="text" placeholder="Ciudad"></input>
+    </div>
+    <br>
+    <!-- Creamos otro div en el que estará el botón que tendremos que pulsar para iniciar la busqueda del elemento-->
+    <div>
+        <input type="button" value="Buscar" onclick="buscar()"></input>
+    </div>
+    <br>
+    <!-- En este div se mostrará el resultado de la busqueda-->
+    <div id="resultado"> </div>
+    <script>
+        // Este array contiene los elementos que queremos que nos muestre la búsqueda.
+        const array = ["Málaga 29001", "Alicante 03001", "Murcia 30001", "Madrid 28001", "Barcelona 08001", "Sevilla 41001", "Valencia 46001", "Zaragoza 50001"];
+
+        // Creamos una función que se ejecutará cuando pulsemos en "buscar"
+        function buscar() {
+            //Obtenemos el valor que se introduce en el cuadro de texto y lo convertimos en minusculas.
+            const busqueda = document.getElementById("text").value.toLowerCase();
+            //En nuestra busqueda buscamos la primera coincidencia con los elementos del array
+            const resultado = array.find(array => array.toLowerCase().includes(busqueda));
+            //llamamos a la función y se muestra el resultado en pantalla.
+            mostrarResultado(resultado);
+        }
+        //Creamos una función para mostrar el resultado en el div de "resultado"
+        function mostrarResultado(resultado) {
+            const resultadoDiv = document.getElementById("resultado");
+            //Cramos una condicion para saber si hay alguna coincidencia en la busqueda, si no la hay aparecera en pantalla el mensaje "No se ha encontrado ninduna coincidencia"
+            if (resultado) {
+                resultadoDiv.textContent = resultado;
+            } else {
+                resultadoDiv.textContent = "No se ha encontrado ninguna coincidencia";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
