@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio1</title>
+</head>
+
+<body>
+    <!-- En este div tenemos un campo de texto y un botón para cargar el ejemplo predefinido -->
+    <div>
+        <input type="text" id="text">
+        <input type="button" value="Cargar ejemplo" onclick="cargarEjemplo()">
+    </div>
+    <!-- El siguiente div mostrará el array del ejemplo el resultado del cálculo del ejemplo -->
+    <div>
+        <p id="array"></p>
+        <p id="resultado"></p>
+    </div>
+    <!--Ahora introduciremos nuestro propio array-->
+    <h3> Introduce la serie de números: </h3><br>
+    <!--Div que contiene el campo de texto para introducir nuestro array y el botón para iniciar los calculos.-->
+    <div>
+        <input type="text" id="inputNumeros"></input>
+        <input type="button" value="Calcular" onclick="calcularNumeros()">
+    </div>
+    <!--Este div verificará si el usuario ha introducido valores numéricos-->
+    <div id="entradaNoPermitida"></div>
+    <!--Este div mostrará el resultado del cálculo-->
+    <div>
+        <p id="arrayCalcular"></p>
+    </div>
+
+    <script>
+        //Declaramos la variable del array.
+        let array;
+        //Creamos una función para cargar el ejemplo predeterminado.
+        function cargarEjemplo() {
+            document.getElementById("text").value = "34,5,11,40";//definimos el valor del array dentro del cuadro de texto
+            array = document.getElementById("text").value.split(/,/);//con el método split dividimos el texto en varios elementos (array)
+            mostrarResultado("array", "resultado", true);//Llamamos a la funcion mostrarResultado con el id "array", el argumento true indica que queremos mostrar el resultado del ejemplo.
+        }
+
+        //Creamos una función para calcular la media del array.
+        function calcularMedia(array) {
+            let suma = 0;
+            for (let i = 0; i < array.length; i++) {
+                suma = parseInt(array[i], 10) + suma;
+            }
+
+            const media = suma / array.length;
+            return media;
+
+        }
+        //Función para mostrar el resultado en el html.
+        function mostrarResultado(idResultado, desdeCargarEjemplo) {
+            const arrayEnteros = array.map(function (value) {
+                return parseInt(value, 10)
+            });
+
+            const media = calcularMedia(array);
+            //Extendemos los elementos del array para obtener el valor maximo/mínimo de todos. 
+            const max = Math.max(...array.map(parseFloat));
+            const min = Math.min(...array.map(parseFloat));
+
+            //Se actualiza el contenido del elemento html especificado
+            document.getElementById(idResultado).innerHTML =
+                "El número más grande es: " + max + "<br>" +
+                "El número más pequeño es: " + min + "<br>" +
+                "La media de todos los números es: " + media.toFixed(2);
+            //Si es true, se ejecuta y se actualiza el contenido de idArray con el array formateado, si es false solo se actualiza el elemento de arriba (idResultado)
+            if (desdeCargarEjemplo) {
+                document.getElementById(idArray).innerHTML = arrayEnteros.join("<br>");
+            }
+        }
+        //Funcion para calcular el array que hemos ingresado.
+        function calcularNumeros() {
+            const inputNumeros = document.getElementById("inputNumeros").value; //obtenemos el valor de la entrada de texto. 
+            document.getElementById("entradaNoPermitida").innerHTML = "";//Reestablecemos el mensaje de error, antes de mostrarlo nuevamente con una nueva entrada incorrecta.
+            //Comprobamos si el usuario ha introducido valores numericos separados por comas
+            if (/^\s*\d+\s*(,\s*\d+\s*)*$/.test(inputNumeros)) {
+                array = inputNumeros.split(/,/);
+                mostrarResultado("arrayCalcular", false);//Se llama a la funcion mostrarResultados, el primer argumento será donde se mostraran los resultados del calculo, el segundo argumento indica que no estamos cargando el ejemplo, si no nuestro calculo.
+            } else {
+                document.getElementById("entradaNoPermitida").innerHTML = "Por favor, introduce solo valores númericos separados por \" , \"";
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

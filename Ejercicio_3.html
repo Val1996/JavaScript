@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript2</title>
+
+    <style>
+        /*Sección de estilos con CSS que se aplica al elemento especificado del codigo HTML*/
+        body {
+            text-align: center;
+            /*centra el texto en el cuerpo de la página*/
+            margin: 13%;
+            /*Establece un margen vertical del 13% en la parte superior e inferior del cuerpo*/
+        }
+
+        #clock {
+            font-size: 8em;
+            /*Establece el tamaño del reloj (la fuente del elemento con el ID "clock") en 8 veces el tamaño de la fuente original*/
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Ejercicio 3:</h4>
+    <div id="date"></div>
+    <!--Se crea un contenedor div con el ID "date", el cual se usa para contener informacion relacionada con la fecha-->
+    <div id="clock"></div>
+    <!--Se crea otro contenedor div con el ID "clock", el cual se usa para contener informacion relacionada con la hora-->
+    <script>
+        function updateDate() //función para actualizar la fecha.
+        {
+            let now = new Date();//Obtiene la fecha y hora actual.
+            let date = now.toLocaleDateString();//Toma la fecha actual y la convierte en una cadena de texto que representa la fecha en el formato de fecha local del navegador.
+            document.getElementById('date').innerHTML = date;//Selecciona el elemento HTML que tiene el atributo "date", y establece su contenido con el valor de la variable "date" 
+            setTimeout(updateDate, 6000);//Con la función "setTimeout" se programa la función "updateDate"para ejecutarla después de 6 segundos(6000 milisegundos)
+        }
+
+        updateDate(); //Se llama a la función "update" para actualizar la fecha.
+    </script>
+
+    <script>
+
+        function updateClock() //función para actualizar el reloj. 
+        {
+
+            let tiempo = new Date();//Obtenemos la fecha y hora actual.
+            let time = tiempo.toLocaleTimeString();//Toma la hora actual y la convierte en una cadena de texto, representado en el formato de hora local del navegador.
+            document.getElementById("clock").innerHTML = time; //Selecciona el elemento HTML que tiene el atributo "clock", y establece su contenido con el valor de la variable "time" 
+            setTimeout(updateClock, 1000);//Con la función "setTimeout" se programa la próxima ejecución de la función "updateClock" después de 1000 milisegundos(1 segundo), oor lo que el reloj se actualiza cada segundo.
+        }
+        updateClock(); //Se llama a la función updaate para actualizar la hora.
+    </script>
+
+
+</body>
+
+</html>

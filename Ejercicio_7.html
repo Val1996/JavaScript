@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript</title>
+</head>
+
+<body>
+    <h1>Ejercicio 4</h1>
+    <script>
+        var texto = " ";
+        do {
+            var cadena = prompt("Por favor, ingrese un texto:");
+            if (texto == "") {
+                texto = texto + cadena;
+            }
+            else {
+                texto = texto + " " + cadena;
+            }
+        }
+        while (confirm("¿Quieres seguir guardando cadenas de caracteres?"));
+        document.write(texto);
+
+    </script>
+</body>
+
+</html>
